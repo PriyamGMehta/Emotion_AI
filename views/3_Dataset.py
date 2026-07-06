@@ -41,42 +41,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.divider()
-
-# ============================================
-# Statistics
-# ============================================
-
-c1, c2, c3, c4 = st.columns(4)
-
-with c1:
-    st.metric(
-        "Total Samples",
-        len(df)
-    )
-
-with c2:
-    st.metric(
-        "Emotion Classes",
-        df["emotion"].nunique()
-    )
-
-with c3:
-    st.metric(
-        "Vocabulary",
-        df["clean_text"]
-        .str.split()
-        .explode()
-        .nunique()
-    )
-
-with c4:
-    st.metric(
-        "Columns",
-        len(df.columns)
-    )
-
-st.divider()
 
 # ============================================
 # Search & Filter
