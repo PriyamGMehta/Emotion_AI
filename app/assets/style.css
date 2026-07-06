@@ -760,3 +760,181 @@ img {
     font-size: 12px;
     transition: width 1s ease-in-out;
 }
+
+/* ===========================================
+   Next-Gen Dashboard (Neural Core)
+=========================================== */
+
+.neural-banner-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 40px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.neural-banner-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.neural-metrics-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(8px);
+}
+
+.neural-glass-metric {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    flex: 1;
+    margin: 0 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s ease;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.neural-glass-metric:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(96, 165, 250, 0.5);
+    box-shadow: 0 15px 40px rgba(96, 165, 250, 0.3);
+}
+
+.neural-value {
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1.1;
+    color: #FFFFFF;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    margin-bottom: 5px;
+}
+
+.neural-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #94A3B8;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ===========================================
+   Dataset Explorer Feed & Pills
+=========================================== */
+
+.feed-container {
+    background: #FFFFFF;
+    border: 1px solid #F3F4F6;
+    border-radius: 16px;
+    padding: 10px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.feed-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #F3F4F6;
+    transition: background-color 0.2s;
+}
+
+.feed-row:last-child {
+    border-bottom: none;
+}
+
+.feed-row:hover {
+    background-color: #F9FAFB;
+}
+
+.feed-text {
+    font-size: 14px;
+    color: #374151;
+    font-weight: 500;
+    max-width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.emotion-pill {
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ===========================================
+   Radial Dials
+=========================================== */
+
+.dials-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.dial-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+}
+
+.radial-dial {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.dial-inner {
+    width: 76px;
+    height: 76px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);
+}
+
+.dial-count {
+    font-size: 16px;
+    font-weight: 800;
+    color: #1F2937;
+    line-height: 1.2;
+}
+
+.dial-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4B5563;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
