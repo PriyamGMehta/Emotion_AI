@@ -937,3 +937,96 @@ img {
     letter-spacing: 0.5px;
     text-align: center;
 }
+
+/* ===========================================
+   Champion Model Banner
+=========================================== */
+
+.champion-banner {
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.champion-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(0,0,0,0) 70%);
+    border-radius: 50%;
+    transform: translate(30%, -30%);
+}
+
+.champion-header {
+    margin-bottom: 15px;
+}
+
+.champion-badge {
+    background: rgba(245, 158, 11, 0.15);
+    color: #F59E0B;
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.champion-model-name {
+    font-size: 42px;
+    font-weight: 900;
+    color: #FFFFFF;
+    margin-bottom: 30px;
+    font-family: 'Space Grotesk', sans-serif;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.champion-metrics {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.champion-metric-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.champion-metric-box:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(59, 130, 246, 0.4);
+}
+
+.champion-metric-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: #60A5FA;
+    margin-bottom: 5px;
+    line-height: 1;
+}
+
+.champion-metric-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #94A3B8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
