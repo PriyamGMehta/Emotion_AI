@@ -775,10 +775,11 @@ img {
 }
 
 .neural-banner-img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    display: block;
+    width: 100% !important;
+    min-width: 100% !important;
+    height: 250px !important;
+    object-fit: cover !important;
+    display: block !important;
 }
 
 .neural-metrics-overlay {
