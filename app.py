@@ -18,9 +18,14 @@ except ImportError:
     pass
 
 # ==========================================
-# Load Global CSS
+# Load Global CSS & Fonts
 # ==========================================
-with open("app/assets/style.css") as css:
+st.markdown(
+    """<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&display=swap" rel="stylesheet">""",
+    unsafe_allow_html=True
+)
+
+with open("app/assets/style.css", encoding="utf-8") as css:
     st.markdown(
         f"<style>{css.read()}</style>",
         unsafe_allow_html=True

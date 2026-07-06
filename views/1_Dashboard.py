@@ -58,76 +58,64 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # ==============================
-# Tabbed Interface
+# Dataset Explorer
 # ==============================
 
-tab1, tab2 = st.tabs(["📈 Analytics & Trends", "🗂️ Dataset Explorer"])
+st.markdown("### Emotion Class Counts")
 
-# --------- TAB 1: ANALYTICS ---------
-with tab1:
-    st.markdown("### Performance & Distribution")
-    st.write("Visual breakdown of the dataset's class distribution.")
-    
-    left, right = st.columns(2)
-    with left:
-        st.plotly_chart(
-            dashboard.emotion_bar_chart(df),
-            use_container_width=True
-        )
-    with right:
-        st.plotly_chart(
-            dashboard.emotion_pie_chart(df),
-            use_container_width=True
-        )
+emotion_count = df["emotion"].value_counts().reset_index()
+emotion_count.columns = ["Emotion", "Count"]
+max_count = emotion_count["Count"].max()
 
-# --------- TAB 2: DATA EXPLORER ---------
-with tab2:
-    st.markdown("### Emotion Class Counts")
+color_map = {
+    "joy": "#3B82F6",
+    "sadness": "#6366F1",
+    "anger": "#EF4444",
+    "fear": "#F59E0B",
+    "love": "#EC4899",
+    "surprise": "#10B981"
+}
+
+dials_html = "<div class='dials-wrapper'>"
+for _, row in emotion_count.iterrows():
+    emotion = row["Emotion"]
+    count = row["Count"]
+    percentage = (count / max_count) * 100
+    color = color_map.get(emotion.lower(), "#3B82F6")
     
-    emotion_count = df["emotion"].value_counts().reset_index()
-    emotion_count.columns = ["Emotion", "Count"]
-    max_count = emotion_count["Count"].max()
-    
-    progress_html = "<div class='feed-container'>"
-    for _, row in emotion_count.iterrows():
-        emotion = row["Emotion"]
-        count = row["Count"]
-        percentage = (count / max_count) * 100
-        
-        progress_html += f"""
-<div class="progress-strip-container">
-<div class="progress-header">
-<span style="text-transform: capitalize;">{emotion}</span>
-<span>{count:,}</span>
+    dials_html += f"""
+<div class="dial-container">
+<div class="radial-dial" style="background: conic-gradient({color} {percentage}%, #F3F4F6 0);">
+<div class="dial-inner">
+<div class="dial-count">{count:,}</div>
 </div>
-<div class="progress-track">
-<div class="progress-fill fill-{emotion}" style="width: {percentage}%;"></div>
 </div>
+<div class="dial-label">{emotion}</div>
 </div>
 """
-    progress_html += "</div>"
-    st.markdown(progress_html, unsafe_allow_html=True)
+dials_html += "</div>"
+st.markdown(dials_html, unsafe_allow_html=True)
+
+st.markdown("<br>", unsafe_allow_html=True)
+st.markdown("### Dataset Feed (Top 50)")
+
+feed_html = "<div class='feed-container'>"
+for _, row in df.head(50).iterrows():
+    text = row["clean_text"]
+    emotion = row["emotion"]
     
-    st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown("### Dataset Feed (Top 50)")
+    # Handle cases where text might be too long or empty
+    display_text = text if isinstance(text, str) else "No text data"
     
-    feed_html = "<div class='feed-container'>"
-    for _, row in df.head(50).iterrows():
-        text = row["clean_text"]
-        emotion = row["emotion"]
-        
-        # Handle cases where text might be too long or empty
-        display_text = text if isinstance(text, str) else "No text data"
-        
-        feed_html += f"""
+    feed_html += f"""
 <div class="feed-row">
 <div class="feed-text" title="{display_text}">{display_text}</div>
 <div class="emotion-pill pill-{emotion}">{emotion}</div>
 </div>
 """
-    feed_html += "</div>"
-    
-    st.markdown(feed_html, unsafe_allow_html=True)
+feed_html += "</div>"
+
+st.markdown(feed_html, unsafe_allow_html=True)
 
 
 # ==============================
