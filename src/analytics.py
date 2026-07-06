@@ -1,9 +1,12 @@
 import pandas as pd
 import plotly.express as px
 from sklearn.feature_extraction.text import CountVectorizer
-
+from src.dashboard_utils import DashboardUtils
 
 class Analytics:
+
+    def __init__(self):
+        self.utils = DashboardUtils()
 
     def emotion_statistics(self, df):
 
@@ -50,13 +53,15 @@ class Analytics:
             y="Count",
             color="Emotion",
             text="Count",
-            title="Emotion Distribution"
+            title="Emotion Distribution",
+            color_discrete_sequence=self.utils.saas_colors
         )
 
         fig.update_layout(
             title_x=0.5,
-            template="plotly_white"
+            **self.utils.layout_config
         )
+        fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor="#F3F4F6")
 
         return fig
 
@@ -79,12 +84,13 @@ class Analytics:
             names="Emotion",
             values="Count",
             hole=0.45,
-            title="Emotion Percentage"
+            title="Emotion Percentage",
+            color_discrete_sequence=self.utils.saas_colors
         )
 
         fig.update_layout(
             title_x=0.5,
-            template="plotly_white"
+            **self.utils.layout_config
         )
 
         return fig
@@ -104,13 +110,15 @@ class Analytics:
             temp,
             x="Sentence Length",
             nbins=30,
-            title="Sentence Length Distribution"
+            title="Sentence Length Distribution",
+            color_discrete_sequence=[self.utils.saas_colors[0]]
         )
 
         fig.update_layout(
             title_x=0.5,
-            template="plotly_white"
+            **self.utils.layout_config
         )
+        fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor="#F3F4F6")
 
         return fig
 
@@ -145,13 +153,15 @@ class Analytics:
             y="Word",
             orientation="h",
             color="Frequency",
-            title=f"Top {top_n} Most Frequent Words"
+            title=f"Top {top_n} Most Frequent Words",
+            color_continuous_scale="Blues"
         )
 
         fig.update_layout(
             title_x=0.5,
             yaxis=dict(categoryorder="total ascending"),
-            template="plotly_white"
+            **self.utils.layout_config
         )
+        fig.update_xaxes(showgrid=True, gridwidth=1, gridcolor="#F3F4F6")
 
         return fig
