@@ -4,3 +4,6 @@ plotly
 scikit-learn
 joblib
 watchdog
+contractions
+nltk
+spacy
